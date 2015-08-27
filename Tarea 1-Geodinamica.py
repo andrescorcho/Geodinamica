@@ -3,27 +3,27 @@
 
 ### Tarea1. Andres Felipe Rodriguez Corcho
 
-# In[49]:
+# In[3]:
 
 #Libreria Matematica
 get_ipython().magic(u'pylab inline')
 
 
-# In[50]:
+# In[4]:
 
 #Funcion producto Cruz
 def Cruz(V1,V2):
     return numpy.cross(V1,V2)
 
 
-# In[51]:
+# In[5]:
 
 #Funcion Magnitud Vector
 def Magnitud(v):
     return sqrt(v[0]**2+v[1]**2+v[2]**2)
 
 
-# In[52]:
+# In[6]:
 
 def VelocidadRelativa (w,lat,lon,latEu,lonEu):
     #Transformacion de coordenadas de grados a Radianes
@@ -70,7 +70,7 @@ def VelocidadRelativa (w,lat,lon,latEu,lonEu):
 
 #### Calculos Punto 2
 
-# In[53]:
+# In[7]:
 
 #Calculo de la Velocidad del Volcan Mauna Loa
 Va=VelocidadRelativa(9.67*10**-7,19.475,-155.608,-61.7,97.2)
@@ -78,7 +78,7 @@ Va=VelocidadRelativa(9.67*10**-7,19.475,-155.608,-61.7,97.2)
 print Va,"m/yr"
 
 
-# In[54]:
+# In[8]:
 
 #Calculo Magnitud
 Vmaga=Magnitud(Va)
@@ -86,14 +86,14 @@ Vmaga=Magnitud(Va)
 ta=(100*10**3)/Vmaga
 #Resultados
 print "La magnitud de la velocidad tangencial es ",Vmaga," m/yr"
-print "\nEl tiempo en el cual el Volcan Mauna Loa se mueve 100 km sobre el hotpot es de:",ta/10**6," Millones años"
+print "\nEl tiempo en el cual el Volcan Mauna Loa se mueve 100 km sobre el hotspot es de:",ta/10**6," Millones años"
 
 
 # De esta Manera la cadena de islas se mueve a una velocidad de 0.0972m/yr hacia el noroccidente.
 
 #### Parte B El volcan Mauna Loa se mueve hacia el NorOeste segun el vector V=(N,E,U) calculado.
 
-# In[55]:
+# In[9]:
 
 from IPython.display import Image
 Image(filename='Hawai.PNG')
@@ -101,38 +101,47 @@ Image(filename='Hawai.PNG')
 
 # En la imagen se muestra la cadena de islas del problema, que se dezplaza hacia el noroccidente a la velocidad calculada anteriormente (La isla mas grande que se observa es Hawai, las demas han sido erosionadas con el tiempo). Es posible observar, que a lo largo del tiempo el patron de movimiento de la placa del pacifico ha cambiado, por lo cual, se tendra en cuenta el que se presenta en la actualid
 
-# Considerando que la cadena de islas (Placa del Pacifico respecto al Hotsop) siga el mismo patron colisionara con la masa de tierra (Perteneciente a territorio Ruso) que se observa en la imagen, deslizandose debajo de la trinchera observada, a una distancia de:
+# Considerando que la cadena de islas (Placa del Pacifico respecto al Hotsop) siga el mismo patron colisionara con la masa de tierra (Perteneciente a territorio Japones) que se observa en la imagen, deslizandose debajo de la trinchera observada, a una distancia de:
 
-# In[56]:
+# In[10]:
 
 from IPython.display import Image
 Image(filename='MasaTierra.PNG')
 
 
-# De esta manera para que esta primera isla colisione debera avanzar 647.98 km, junto con las coordenadas del lugar, asi que, usando lo programado anteriormente, tenemos:
+# De esta manera para que esta primera isla colisione debera avanzar 5856.16 km, junto con las coordenadas del lugar, asi que, usando lo programado anteriormente, tenemos:
 
-# In[60]:
+# In[11]:
+
+#Datos
+#Punto Colision
+LatB=29.267187
+LonB=142.336490
+#Polo Euler
+w3=-9*10**-7
+LaTEB=61.1
+LonEB=85.8
 
 #Calculo de la Velocidad de la Primera isla
-Vb=VelocidadRelativa(9.67*10**-7,51.47,159.13,-61.7,97.2)
+Vb=VelocidadRelativa(w3,LatB,LonB,-61.7,97.2)
 
 print Vb,"m/yr"
 
 
-# In[71]:
+# In[12]:
 
 #Calculo Magnitud
 Vmagb=Magnitud(Vb)
 #Despejamos el tiempo, usando la distancia dada de 100 km
-tb=(647.98*10**3)/Vmagb
+tb=(5856.16*10**3)/Vmagb
 #Resultados
 print "La magnitud de la velocidad tangencial es ",Vmagb," m/yr"
-print "\nEl tiempo en el cual el Volcan Mauna Loa se mueve 100 km sobre el hotpot es de:",tb/10**6," Millones años"
+print "\nEl tiempo en el cual la primera isla se mueve 5856.16 km es de:",tb/10**6," Millones años"
 
 
 ### Calculos Punto 3
 
-# In[62]:
+# In[13]:
 
 #Este punto se realizara usando estadistica de varios puntos tomados para verificar las velocidades calculadas, tomaremos seis.
 Lat1= 26.861280 #°
@@ -154,7 +163,7 @@ Lat=24.4 #°
 Lon=17.7 #°
 
 
-# In[66]:
+# In[14]:
 
 #Calculo de la Velocidad de diferentes puntos en el Plateau de Tibet
 V1=VelocidadRelativa(w3,Lat1,Lon1,Lat,Lon)
@@ -168,7 +177,7 @@ V6=VelocidadRelativa(w3,Lat6,Lon6,Lat,Lon)
 print "Las velocidades en m/ yr de los puntos son (en orden ascendente 1 a 6):\n",V1,"\n",V2,"\n",V3,"\n",V4,"\n",V5,"\n",V6
 
 
-# In[68]:
+# In[15]:
 
 #Magnitudes
 Vmag1=Magnitud(V1)
@@ -183,7 +192,7 @@ print "Las magnitudes correspondientes en m/ yr de los puntos son (en orden asce
 print Vmag4,"\n",Vmag5,"\n",Vmag6
 
 
-# In[63]:
+# In[16]:
 
 from IPython.display import Image
 Image(filename='Tibet.PNG')
@@ -191,7 +200,7 @@ Image(filename='Tibet.PNG')
 
 # Podemos observar que las magnitudes (y los vectores) de velocidad son muy similares en los diferentes puntos de el Plateau del Tibet tomados (como se puede observar en el mapa). Sin embargo, se calculara la desviacion estandar de estos, para tener un valor cuantitativo de mayor validez.
 
-# In[70]:
+# In[17]:
 
 #Array con velocidades
 Vel3=[Vmag1,Vmag2,Vmag3,Vmag4,Vmag5,Vmag6]
@@ -205,13 +214,17 @@ print "La desviacion estandar calculada es: ", Desv
 
 # Teniendo en cuenta la desviacion estandar calculada, se puede calcular un promedio de las velocidades.
 
-# In[74]:
+# In[18]:
 
 Vprom=numpy.mean(Vel3)
 print "La velocidad promedio de convergencia entre las placas de Eurasia e India es de: ",Vprom," m/yr"
 
 
-# In[ ]:
+#### Paper con Densidades de modelo isostatico 
+
+# http://www.seismo.ethz.ch/research/groups/stek/people/hetenyig/pub/Hetenyi2007.pdf
+
+# In[18]:
 
 
 
